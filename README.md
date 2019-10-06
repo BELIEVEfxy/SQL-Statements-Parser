@@ -193,7 +193,7 @@ print("查询用时",runTime,"s，查询结果返回",len(result),"行")
 ```
 - 索引扫描（Index Scan）：首先先对数据集建立B+树索引，输入SQL语句，然后根据索引找到符合条件的数据
 ```python
-#建立B+树详情见代码index_scan.py
+建立B+树详情见代码index_scan.py
 ```
 
 ### （2） 连接运算
