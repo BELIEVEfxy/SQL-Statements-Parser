@@ -1,7 +1,7 @@
 # SQL Statements Parser
-用Python解析输入的SQL语句，实现选择运算（表扫描和索引扫描）和连接运算（嵌套循环连接、归并连接和散列连接），并给出运行时间，比较不同算法的优劣。
+用Python解析输入的SQL语句，实现选择运算（表扫描和索引扫描<font color=#FF0000 >[B+树索引]</font>）和连接运算（嵌套循环连接、归并连接和散列连接），并给出运行时间，比较不同算法的优劣。
 
-## 1.数据集
+## 1. 数据集
 **authors.txt** : Author_ID, Author_Name, Sex, Age
 
 eg: [105992	郝永梅	女	35]
@@ -15,7 +15,7 @@ eg: [1	语言文字应用	北京市	A]
 eg: [11	hph7ekvaru2f6hc	邓世州	北方音乐	2011	p7j94rgbb1l1zpnqx0f9f5v89cju36ovpsojjoutqbctgomsb2rw8qel6cykt7gq4vrbe0l0og8kvj8x6p23yj74k1umnvk1p0v2;w6bchpr2t0lhvp4keeni4uboxnynrxd7klejr7pr61aa8g7bopduuuo5xg6wbnvmbez903ktzhagt6fzpfozoo7aox1t4enkfbat;o09a9pqt3w2qevvkeiqhjn0afi121njru1m4bodxw0efpq56t3fhqi5tqo72sp1ihipa12xj7xjn144yzg4xbst6yvzaexlatr9q	3qlrt4tocef4l4rvtnufn5v2rz0r61aakuy2rwbardwtp2kh1nkctb53d20twcsjvcfj8lrra3j5wyscqn2i68hcz5bbhumpch7s
 ]
 
-## 2.输入语句说明
+## 2. 输入语句说明
 - 支持子句select,from,where
 - 支持大写、小写
 - 支持任意多的换行、空格、制表符，但要求必须以‘;’结束
@@ -140,8 +140,7 @@ def getTerms(terms,table_name):
     return terms
 ```
 
-
-## 3.功能描述
+## 3. 功能描述
 ### （1） 选择运算
 - 表扫描（Table Scan)：输入SQL语句，从头到尾扫描表，找到符合条件的数据
 ```python
@@ -439,23 +438,6 @@ elif table_name[0]=='authors.txt':
 for i in range(1,cnt2):
     value=HashFunction(table2[name2][i],hashNum2)
     hashValue2[value].append(i)
-    
-# 哈希后的结果写入文件，方便查看
-# file_out1=open("hashValue1.txt",mode='a',encoding='UTF-8')
-# file_out2=open("hashValue2.txt",mode='a',encoding='UTF-8')
-# for i in range(0,len(hashValue1)):
-#     file_out1.write(str(i)+',')
-#     for j in range(0,len(hashValue1[i])):
-#         file_out1.write(str(hashValue1[i][j])+' ')
-#     file_out1.write('\n')
-# file_out1.close()
-# for i in range(0,len(hashValue2)):
-#     file_out2.write(str(i)+',')
-#     for j in range(0,len(hashValue2[i])):
-#         file_out2.write(str(hashValue2[i][j])+' ')
-#     file_out2.write('\n')
-# file_out2.close()
-# print("write hash value finish")
 
 #对两个哈希表进行扫描
 cnt=0
